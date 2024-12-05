@@ -4,8 +4,6 @@ import OceanMap from "../../../assets/earth/10k/ocean_map.jpg";
 import {Sphere} from "@react-three/drei";
 import {EARTH_RADIUS} from "../../../constants.ts";
 import {toast} from "react-toastify";
-import EARTH_FRAGMENT from "../shader/earth_fragment.glsl?raw";
-import EARTH_VERTEX from "../shader/earth_vertex.glsl?raw";
 
 export default function Ocean() {
     // load texture
