@@ -1,13 +1,13 @@
-import React, { MutableRefObject, useEffect } from "react";
+import { MutableRefObject, useEffect } from "react";
 import { Html } from "@react-three/drei";
 import { Group } from "three";
 
 import bodyImage from "../../assets/human/rb_109679.png";
 
-function SimpleToolTip(props: { groupRef: MutableRefObject<Group> }) {
+function SimpleToolTip(props: { groupRef: MutableRefObject<Group | any>  }) {
     useEffect(() => {
         if(props.groupRef !== undefined){
-            props.groupRef.current.position.set(-3.5,-2,0);
+            props.groupRef.current?.position.set(-3.5,-2,0);
         }
     }, [props.groupRef]);
   return (

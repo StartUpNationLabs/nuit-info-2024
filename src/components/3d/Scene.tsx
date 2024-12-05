@@ -15,7 +15,7 @@ import { Group } from "three/examples/jsm/libs/tween.module.js";
 
 
 function Scene() {
-    const toolTipGroupRef = useRef<Group>();
+    const toolTipGroupRef = useRef<Group | null>(null);
     const graphicOptions = useRecoilValue(graphicOptionsState);
     return (
         <>
