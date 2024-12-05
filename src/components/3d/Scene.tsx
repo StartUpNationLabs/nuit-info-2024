@@ -9,6 +9,7 @@ import Moon from "./planets/Moon.tsx";
 import CameraControl from "./common/CameraControl.tsx";
 import Earth from "./planets/Earth.tsx";
 import MobileEarth from "./planets/MobileEarth.tsx";
+import Ocean from "./planets/Ocean.tsx";
 
 
 function Scene() {
@@ -46,6 +47,7 @@ function Scene() {
                 <></>
             )}
             {graphicOptions.countryBorders ? <CountryBorders/> : <></>}
+            <Ocean/>
             <EffectComposer>
                 {graphicOptions.bloom ? (
                     <Bloom

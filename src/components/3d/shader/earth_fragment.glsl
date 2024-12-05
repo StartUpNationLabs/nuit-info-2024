@@ -89,7 +89,12 @@ void main() {
     #include <logdepthbuf_fragment>
     #include <map_fragment>
     #include <color_fragment>
-    #include <alphamap_fragment>
+    //    #include <alphamap_fragment>
+    float calOpacity = texture2D(alphaMap, vAlphaMapUv).g;
+
+    if (calOpacity == 1.0f){
+        diffuseColor.a *= 0.9f;
+    }
     #include <alphatest_fragment>
     #include <alphahash_fragment>
     #include <roughnessmap_fragment>
@@ -111,10 +116,9 @@ void main() {
         inShadow = (1.0 - average(reflectedLight.directDiffuse));
     }
     if (average(emissiveColor.rgb) > 0.02){
-
         totalEmissiveRadiance *= emissiveColor.rgb * inShadow;
     }
-    else{
+    else {
         totalEmissiveRadiance *= 0.0;
     }
 
