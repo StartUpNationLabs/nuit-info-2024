@@ -3,7 +3,7 @@ import {Bloom, EffectComposer, Noise, SMAA, ToneMapping, Vignette,} from "@react
 import {useRecoilValue} from "recoil";
 import {graphicOptionsState,} from "../../atoms.ts";
 import {CountryBorders} from "./planets/countryBorders.tsx";
-import {Suspense} from "react";
+import {Suspense, useRef} from "react";
 import Sun from "./planets/Sun.tsx";
 import Moon from "./planets/Moon.tsx";
 import CameraControl from "./common/CameraControl.tsx";
@@ -11,9 +11,11 @@ import Earth from "./planets/Earth.tsx";
 import MobileEarth from "./planets/MobileEarth.tsx";
 import Ocean from "./planets/Ocean.tsx";
 import SimpleTooltip from "./SimpleTooltip.tsx";
+import { Group } from "three/examples/jsm/libs/tween.module.js";
 
 
 function Scene() {
+    const toolTipGroupRef = useRef<Group>();
     const graphicOptions = useRecoilValue(graphicOptionsState);
     return (
         <>
@@ -39,7 +41,9 @@ function Scene() {
             >
                 {graphicOptions.highResolutionEarth ? <Earth/> : <MobileEarth/>}
             </Suspense>
-            <SimpleTooltip/>
+            <SimpleTooltip
+                groupRef={toolTipGroupRef}
+            />
             <Sun/>
             {graphicOptions.enableMoon ? (
                 <Suspense fallback={<></>}>
