@@ -10,6 +10,7 @@ import CameraControl from "./common/CameraControl.tsx";
 import Earth from "./planets/Earth.tsx";
 import MobileEarth from "./planets/MobileEarth.tsx";
 import Ocean from "./planets/Ocean.tsx";
+import SimpleTooltip from "./SimpleTooltip.tsx";
 
 
 function Scene() {
@@ -38,6 +39,7 @@ function Scene() {
             >
                 {graphicOptions.highResolutionEarth ? <Earth/> : <MobileEarth/>}
             </Suspense>
+            <SimpleTooltip/>
             <Sun/>
             {graphicOptions.enableMoon ? (
                 <Suspense fallback={<></>}>
